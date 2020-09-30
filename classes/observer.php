@@ -22,7 +22,7 @@ class local_up1_courselist_observer {
         if (! $mycourse->category) {
             throw new moodle_exception('unknowncategory');
         }
-        $category = coursecat::get($mycourse->category);
+        $category = core_course_category::get($mycourse->category);
         return $category->resort_courses('fullname', true);
     }
 
