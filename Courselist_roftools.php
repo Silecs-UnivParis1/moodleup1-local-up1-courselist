@@ -125,7 +125,7 @@ class courselist_roftools {
         if (empty($courses)) {
             return array();
         }
-        $subquery = up1_meta_gen_sql_query('course', array('up1niveauannee', 'up1semestre'));
+        $subquery = up1_meta_gen_sql_query(['up1niveauannee', 'up1semestre']);
         $sql = "SELECT c.id "
             . "FROM {course} AS c JOIN (" . $subquery .") AS s ON (s.id = c.id) "
             . "WHERE c.id IN  ( " . implode(", ", array_keys($courses)) . " ) "
