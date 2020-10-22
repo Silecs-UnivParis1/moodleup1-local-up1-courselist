@@ -76,12 +76,12 @@ class courselist_cattools {
     protected static function get_descendant_courses_from_catbis($catid, $metadatacat) {
         global $DB;
 
-        $sql = "SELECT cid.objectid, c2.path FROM {course_categories} c1 "
+        $sql = "SELECT cid.instanceid, c2.path FROM {course_categories} c1 "
                 . "JOIN {course_categories} c2 ON (c2.path LIKE CONCAT(c1.path, '/%') OR c2.id=c1.id) "
-                . "JOIN {custom_info_data} cid ON ((CONCAT(';',data,';') LIKE CONCAT('%;',c2.id,';%'))) "
-                . "WHERE c1.id = ? AND cid.fieldid = ? AND objectname='course' ";
+                . "JOIN {customfield_data} cid ON ((CONCAT(';',value,';') LIKE CONCAT('%;',c2.id,';%'))) "
+                . "WHERE c1.id = ? AND cid.fieldid = ? ";
 
-        $fieldid = $DB->get_field('custom_info_field', 'id', array('shortname' => $metadatacat));
+        $fieldid = $DB->get_field('customfield_field', 'id', ['shortname' => $metadatacat]);
         $res = $DB->get_fieldset_sql($sql, array($catid, $fieldid));
         return $res;
     }

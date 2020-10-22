@@ -32,15 +32,15 @@ class courselist_roftools {
     public static function get_courses_from_parent_rofpath($rofpath, $recursive = true) {
         global $DB;
         // 1st step : find the matching courses
-        $fieldid = $DB->get_field('custom_info_field', 'id', array('objectname' => 'course', 'shortname' => 'up1rofpathid'), MUST_EXIST);
-        $sql = "SELECT objectid AS courseid, data AS rofpathids"
-                . " FROM {custom_info_data} "
-                . " WHERE objectname='course' AND fieldid=? AND ";
+        $fieldid = $DB->get_field('customfield_field', 'id', ['shortname' => 'up1rofpathid'], MUST_EXIST);
+        $sql = "SELECT instanceid AS courseid, value AS rofpathids"
+                . " FROM {customfield_data} "
+                . " WHERE fieldid=? AND ";
         if ($recursive) {
-            $sql .= "data LIKE ?";
+            $sql .= "value LIKE ?";
             $res = $DB->get_records_sql_menu($sql, array($fieldid, '%' . $rofpath . '%'));
         } else {
-            $sql .= " (data LIKE ? OR data LIKE ?)";
+            $sql .= " (value LIKE ? OR value LIKE ?)";
             $res = $DB->get_records_sql_menu($sql, array($fieldid, '%' . $rofpath, '%' . $rofpath . ';%' ));
         }
         // 2nd step : filter the results to keep only matching rofpaths
