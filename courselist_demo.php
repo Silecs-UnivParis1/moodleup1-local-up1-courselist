@@ -2,7 +2,7 @@
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 require_once(__DIR__ . '/courselist_tools.php');
 
-$node = optional_param('node', '/cat0', PARAM_RAW);
+$node = optional_param('node', '/cat502', PARAM_RAW);
 
 /* @var $PAGE page_base */
 global $PAGE, $OUTPUT;
@@ -27,6 +27,7 @@ echo "<p></p>";
 echo "<h2>Table des cours</h2>";
 $table  = courselist_common::list_courses_html($node, 'table');
 echo $table;
+
 
 echo "<h2>Liste des cours</h2>";
 $list = courselist_common::list_courses_html($node, 'list');
