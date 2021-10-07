@@ -57,9 +57,9 @@ Les métadonnées sont conformes au document `11130_tableau-bord_contrib-spec_v1
       * `up1datevalid` (timestamp) Date d'approbation
       * `up1commentairecreation` Commentaire laissé à la demande de création (assistant)
  5.  Cycle de vie - gestion
-      * `up1datefermeture` (timestamp) date de fermeture du cours aux étudiants
       * `up1dateprevarchivage` (timestamp) date prévisionnelle d'archivage du cours
       * `up1datearchivage` (timestamp) date d'archivage du cours
+      * `up1datefermeture` N'existe plus depuis Moodle 3.9 (remplacé par course.enddate)
  6.  Cycle de vie - informations techniques
       * `up1generateur` ex. "Manuel via assistant (cas n°2 ROF)"
       * `up1modele` modèle utilisé pour la création du cours ex. "[889]socio-anthropo S1"
