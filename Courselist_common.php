@@ -29,6 +29,15 @@ class courselist_common {
             } else {
                 $courses = array();
             }
+        } else if (preg_match('#^/cat\d+/.+$#', $pseudopath, $matches)) {
+            // /catid/composante:pseudopath
+            $rofpath = preg_replace('#^(/cat\d+)+#', '', $pseudopath);
+            if (preg_match('#^/(\d+):.*?([^/]+)$#', $rofpath, $m)) {
+                $rofpath = preg_replace('/^\d+:/', '', $m[2]);
+                $courses = courselist_roftools::get_courses_from_parent_rofpath($rofpath);
+            } else {
+                $courses = array();
+            }
         } else { // at least one ROF item (component)
             $rofpath = strstr(substr($pseudopath, 1), '/'); // drop first component -category- of pseudopath
             $courses = courselist_roftools::get_courses_from_parent_rofpath($rofpath);
