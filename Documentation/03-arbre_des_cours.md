@@ -62,9 +62,9 @@ Il suffit de modifier le paramètre `node` pour obtenir un sous-arbre.
 
 Les identifiants de noeuds sont des "pseudo-chemins" constitués d'une part de la référence à la catégorie (pour les 4 premiers niveaux de l'arbre), et d'autre part de la référence au chemin ROF (pour les niveaux inférieurs).
 
-Ex. : **/cat2060/02/UP1-PROG26751/UP1-PROG33835/UP1-C33843** 
+Ex. : **/cat2060/02:UP1-PROG26751/UP1-PROG33835/UP1-C33843** 
  1.  **2060** est l'identifiant de catégorie, interne à Moodle (Année 2012-2013 ► Paris 1 ► 02-Economie ► Masters)
- 2.  **02/UP1-PROG26751/UP1-PROG33835/UP1-C33843** est le chemin des éléments pédagogiques du ROF, à partir de la composante (02-Économie > Master 1 Economie théorique & empirique > Semestre 1 > UE2)
+ 2.  **02:UP1-PROG26751/UP1-PROG33835/UP1-C33843** est le chemin des éléments pédagogiques du ROF, à partir de la composante (02-Économie > Master 1 Economie théorique & empirique > Semestre 1 > UE2)
 
 Note : l'indication de composante est redondante, car elle fait partie à la fois de l'arbre des catégories et de l'arbre du ROF.
 
@@ -81,7 +81,7 @@ Par exemple, dans un bloc HTML :
     [coursetree node="/cat0"]
         
     <h2>Ce diplôme</h2>
-    [coursetree node="/cat2073/05/UP1-PROG33939"]
+    [coursetree node="/cat2073/05:UP1-PROG33939"]
 ```
 
 Il faut préalablement que le filtre soit activé par l'administrateur via
